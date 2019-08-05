@@ -3,9 +3,7 @@ language: minimal
 services: 
         - docker
 
-before_install:
+script:
         - docker pull olllom/coffeci-chm 
         - docker run olllom/coffeci-chm /bin/sh -c "cd /root; wget http://github.com/olllom/charmm-vs-openmm-energies/tarball/master; tar xzvf master; cd O*; python run.py"
 
-script:
-        - python run.py

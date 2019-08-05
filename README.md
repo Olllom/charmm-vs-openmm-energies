@@ -1,6 +1,6 @@
 # charmm-vs-openmm-energies
 
-![Travis BUILD](https://api.travis-ci.com/Olllom/charmm-vs-openmm-energies.svg?branch=master)
+[![Travis Run](https://travis-ci.com/olllom/charmm-vs-openmm-energies.svg)](https://travis-ci.com/olllom/charmm-vs-openmm-energies)]
 
 ```
 NBFIX
