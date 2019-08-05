@@ -1,5 +1,7 @@
 # charmm-vs-openmm-energies
 
+![Travis BUILD](https://api.travis-ci.com/Olllom/charmm-vs-openmm-energies.svg?branch=master)
+
 ```
 NBFIX
 no long-range-correction              15559.71602
