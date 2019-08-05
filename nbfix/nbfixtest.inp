@@ -1,4 +1,5 @@
 * calc energy for openmm unittest
+* long range correction @LRC
 *
 
 ! input files
@@ -19,7 +20,8 @@ set cutoff 8.0
 nbonds -
     ctofnb @cutoff ctonnb @cutoff -
     vswitch -
-    !lrc_ms
+    @LRC ! long range correction specification
+
 
 skip elec ! don't evaluate electrostatics
 skip imel !

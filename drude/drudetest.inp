@@ -1,4 +1,5 @@
 * OpenMM unit test for Drude
+* long range correction @LRC
 *
 
 ! input files
@@ -20,9 +21,7 @@ nbonds -
     ctonnb @cutoff ctofnb @cutoff - 
     ewald pmew fftx @fftx ffty @fftx fftz @fftx -
     kappa .34 spline order 6 -
-!    lrc_ms 
-!    lrc -
-! drudehardwall l_wall 0.2
+    @LRC ! long range correction specification
 
 ! evaluate energy
 energy 
