@@ -1,0 +1,32 @@
+* calc energy for openmm unittest
+*
+
+! input files
+read rtf flex card name toppar/top_all36_prot.rtf
+read para flex card name toppar/par_all36_prot.prm
+stream toppar/toppar_water_ions.str
+read psf card name ala3_solv.psf
+read coor card name ala3_solv.crd
+
+
+! periodic box
+set cutim 10.0
+CRYSTAL define orthorhombic 32.7119500 32.9959600 33.0071500  90.0 90.0 90.0
+CRYSTAL build @cutim Noper 0 
+
+! nonbonded interactions
+set cutoff 8.0
+nbonds -
+    ctofnb @cutoff ctonnb @cutoff -
+    vswitch -
+    !lrc_ms
+
+skip elec ! don't evaluate electrostatics
+skip imel !
+
+! evaluate energy
+energy
+
+stop
+
+

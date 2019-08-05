@@ -1,0 +1,30 @@
+* OpenMM unit test for Drude
+*
+
+! input files
+stream toppar_drude_master_protein_2013e.str
+read psf card name ala3_solv_drude.psf
+read coor card name ala3_solv_drude.crd
+
+! periodic box
+set box 33.2
+set cutim 14.0
+CRYSTAL define cubic @box @box @box 90. 90. 90.
+CRYSTAL build @cutim Noper 0
+
+! nonbonded forces
+set fftx 32 
+set cutoff 10.0
+nbonds -
+    atom vatom switch vswitch  bycb -
+    ctonnb @cutoff ctofnb @cutoff - 
+    ewald pmew fftx @fftx ffty @fftx fftz @fftx -
+    kappa .34 spline order 6 -
+!    lrc_ms 
+!    lrc -
+! drudehardwall l_wall 0.2
+
+! evaluate energy
+energy 
+
+stop
