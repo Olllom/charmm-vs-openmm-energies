@@ -32,4 +32,10 @@ if __name__ == "__main__":
             run_test("drude", "drudetest.inp", -1832.17898, {"LRC":"LRC"}))
     print( "long-range correction (Shirts et al.)",
             run_test("drude", "drudetest.inp", -1835.06427, {"LRC":"LRC_MS"}))
-
+    print("VSWITCH")
+    print( "original parameters",
+            run_test("vswitch", "charmm_solv_energies.inp", -1835.06427, {"SOL":"m14", "SUB":"original"}))
+    print( "annihilated electrostatics",
+            run_test("vswitch", "charmm_solv_energies.inp", -1835.06427, {"SOL":"m14", "SUB":"uncharged"}))
+    print( "annihilated elec + vdw",
+            run_test("vswitch", "charmm_solv_energies.inp", -1835.06427, {"SOL":"m14", "SUB":"annihilated"}))
