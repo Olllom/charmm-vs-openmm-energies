@@ -11,7 +11,6 @@ def charmm_executable():
         return "c41b1"
 
 def run_test(directory, input_file, expected, parameters={}, output_file="run.out"):
-    charmm = get_charmm()
     olddir = os.getcwd()
     os.chdir(directory)
     env = " ".join("{}={}".format(prm, parameters[prm]) for prm in parameters)
