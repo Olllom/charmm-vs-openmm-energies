@@ -3,7 +3,7 @@ import os
 import getpass
 
 def charmm_executable():
-    if getpass.getuser() == "/root":
+    if getpass.getuser() in {"travis", "root"}:
         # charmm in docker container
         return "/charmm/c40b1_gnu/exec/gnu/charmm"
     else:
