@@ -1,5 +1,5 @@
 * Get the CGenFF Energies of the OMM Solvation Trajectory (PSH+AK)
-* solute @SOL subscript @SUB switching scheme @SWITCH 
+* solute @SOL subscript @SUB switching scheme @SWITCH cutoff @CUT
 *
 
 open unit 1 read card name @SOL_@SUB.rtf
@@ -23,7 +23,7 @@ read coor card name isa_wat.3_kcl.@SOL.cor
 
 set bxl 30.584
 set cutnb  16.0
-set ctofnb 12.0
+set ctofnb @CUT  !12.0
 set ctonnb 10.0
 set cutim  @{cutnb}
 
