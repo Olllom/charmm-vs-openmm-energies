@@ -12,6 +12,7 @@ def charmm_executable():
 
 def run_test(directory, input_file, expected, parameters={}, output_file="run.out"):
     olddir = os.getcwd()
+    print(getpass.getuser(), charmm_executable())
     os.chdir(directory)
     env = " ".join("{}={}".format(prm, parameters[prm]) for prm in parameters)
     os.system("{} {} < {} 2>&1 | tee {}".format(charmm_executable(), env, input_file, output_file))
