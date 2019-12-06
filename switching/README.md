@@ -16,4 +16,4 @@ CHARMM input file: switchtest.inp
 | vswitch annihilated elec + vdw | `{"SOL":"m14", "SUB":"annihilated", "SWITCH":"VSWITCH", "CUT":"12.0"}`        | -10278.77 |
 | vfswitch original parameters | `{"SOL":"m14", "SUB":"original", "SWITCH":"VFSWITCH", "CUT":"12.0"}`            | -10333.46 |
 | vfswitch annihilated electrostatics | `{"SOL":"m14", "SUB":"uncharged", "SWITCH":"VFSWITCH", "CUT":"12.0"}`    | -10247.08 |
-| vfswitch annihilated elec + vdw | `{"SOL":"m14", "SUB":"annihilated", "SWITCH":"VFSWITCH", "CUT":"12.0"}`      | -10243.32 |
+| vfswitch annihilated elec + vdw | `{"SOL":"m14", "SUB":"annihilated", "SWITCH":"VFSWITCH", "CUT":"12.0"}`      | -20243.32 |
