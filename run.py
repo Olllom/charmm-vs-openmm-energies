@@ -1,14 +1,21 @@
 from __future__ import print_function
 import os
+import getpass
 
-#charmm = "/charmm/c40b1_gnu/exec/gnu/charmm"
-charmm = "c41b1"
+def charmm_executable():
+    if getpass.getuser() == "/root":
+        # charmm in docker container
+        return "/charmm/c40b1_gnu/exec/gnu/charmm"
+    else:
+        # local charmm
+        return "c41b1"
 
 def run_test(directory, input_file, expected, parameters={}, output_file="run.out"):
+    charmm = get_charmm()
     olddir = os.getcwd()
     os.chdir(directory)
     env = " ".join("{}={}".format(prm, parameters[prm]) for prm in parameters)
-    os.system("{} {} < {} 2>&1 | tee {}".format(charmm, env, input_file, output_file))
+    os.system("{} {} < {} 2>&1 | tee {}".format(charmm_executable(), env, input_file, output_file))
     with open(output_file, 'r') as f:
         for line in f:
             if line.strip().startswith("ENER>"):
