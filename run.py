@@ -18,7 +18,7 @@ def parse_readme_values(directory):
     parse README.md file in subdirectory
     and extract
         - CHARMM input file
-        - test configurations (input parameters, reference values)
+        - test configurations (short description, input parameters, reference values)
     """
     input_file = None
     tests = []
