@@ -5,13 +5,13 @@ services:
 
 before_install:
   - docker pull olllom/coffeci-chm
-  - docker run -t -d --name chmtest olllom/coffeci-chm /bin/sh -c "cd /root"
-  - docker cp * chmtest:/root
+  - docker run --name chmtest --rm -d -i -t olllom/coffeci-chm bash
+  - docker cp . chmtest:/root
     #  - docker ps -a
     #  - docker run olllom/coffeci-chm /bin/sh -c "cd /root"
 
 script:
-  - docker exec chmtest "cd /root; python run.py"
+  - docker exec -w /root chmtest python run.py
     #- docker run olllom/coffeci-chm /bin/sh -c "cd /root; wget http://github.com/olllom/charmm-vs-openmm-energies/tarball/vswitch; tar xzvf master; cd O*; python run.py"
     #- - python run.py # bundle exec rake test
 
