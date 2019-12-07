@@ -1,0 +1,32 @@
+* Get the CGenFF Energies of the OMM Solvation Trajectory (PSH+AK)
+* solute @SOL subscript @SUB switching scheme @SWITCH cutoff @CUT
+*
+
+read rtf card name @SOL_@SUB.rtf
+read param card flex name @SOL_@SUB.prm
+stream envi.str
+read psf card name isa_wat.3_kcl.@SOL_@SUB.psf
+read coor card name isa_wat.3_kcl.@SOL.cor
+
+set bxl 30.584
+set cutnb  16.0
+set cutim  @{cutnb}
+
+CRYSTAL DEFINE CUBIC @{bxl} @{bxl} @{bxl} 90.0 90.0 90.0
+crystal build @cutim Noper 0 !cutoff @{cutim}
+
+shak bonh para fast sele segid WATS end 
+
+set fftx 32
+set ctofnb @CUT  !12.0
+set ctonnb 10.0
+
+nbonds -
+    atom vatom switch @switch  bycb -
+    ctonnb @ctonnb ctofnb @ctofnb - 
+    ewald pmew fftx @fftx ffty @fftx fftz @fftx -
+    kappa .34 spline order 6
+
+energy 
+
+stop
