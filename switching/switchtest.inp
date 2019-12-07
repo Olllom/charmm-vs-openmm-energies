@@ -2,68 +2,31 @@
 * solute @SOL subscript @SUB switching scheme @SWITCH cutoff @CUT
 *
 
-open unit 1 read card name @SOL_@SUB.rtf
-read rtf card unit 1
-close unit 1
-
-
-open unit 1 read card name @SOL_@SUB.prm
-read param card flex unit 1
-close unit 1
-
-
+read rtf card name @SOL_@SUB.rtf
+read param card flex name @SOL_@SUB.prm
 stream envi.str
-
-
-set seed 1
 read psf card name isa_wat.3_kcl.@SOL_@SUB.psf
-!read coor card name old.cor
 read coor card name isa_wat.3_kcl.@SOL.cor
-
 
 set bxl 30.584
 set cutnb  16.0
-set ctofnb @CUT  !12.0
-set ctonnb 10.0
 set cutim  @{cutnb}
 
 CRYSTAL DEFINE CUBIC @{bxl} @{bxl} @{bxl} 90.0 90.0 90.0
-crystal build Noper 0 cutoff @{cutim}
+crystal build @cutim Noper 0 !cutoff @{cutim}
 
-image byres xcen 0.0 ycen 0.0 zcen 0.0 sele segi @SOL end
+shak bonh para fast sele segid WATS end 
 
-! shake if waters are present
-DEFINE WATERS SELE segi wats END
-IF ?NSEL .EQ. 0 GOTO SKIPSHAKE
-    shak bonh para fast sele segid WATS end 
-label SKIPSHAKE
+set fftx 32
+set ctofnb @CUT  !12.0
+set ctonnb 10.0
 
-energy inbfrq -1 imgfrq -1 shift vatom @SWITCH cutnb @{cutnb} cutim @{cutim} -
-       ctonnb @{ctonnb} ctofnb @{ctofnb} ewal pmew kapp 0.34 order 6 -
-       fftx 32 ffty 32 fftz 32
+nbonds -
+    atom vatom switch @switch  bycb -
+    ctonnb @ctonnb ctofnb @ctofnb - 
+    ewald pmew fftx @fftx ffty @fftx fftz @fftx -
+    kappa .34 spline order 6
 
-energy inbfrq 1 imgfrq 1
+energy 
 
-! open read unit 55 file name data/solv_traj/@{ENV}.@{SOL}.a.@{ID}.dcd
-! TRAJ FIRSTU 55 NUNIT 1
-
-! ENERGY INBFRQ 1 IMGFRQ 1 
-
-! set i 1
-! open write unit 45 card name data/solv_ener/chm.@{ENV}.@{SOL}.a.@{ID}.txt
-! LABEL ENELOOP
-
-! TRAJ READ
-
-! energy 
-! FORMAT (F14.5)
-! set totene ?ENER
-! FORMAT
-
-! write title unit 45
-! *@{totene}
-
-! incr i by 1
-! if @{i} LE ?NFILE goto ENELOOP
-
-STOP
+stop

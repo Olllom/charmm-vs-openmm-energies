@@ -67,12 +67,17 @@ if __name__ == "__main__":
         print("   -t  throw for mismatching energies")
         print("   -v  print CHARMM output on command line")
         sys.exit(0)
+
     directories = [d for d in os.listdir(".") if os.path.isdir(d)]
     for directory in directories:
         print("\n"+directory.upper())
         charmm_input, tests = parse_readme_values(directory)
-        for test in tests:
+        for i, test in enumerate(tests):
             description, env, ref = test
-            result, expected = run_test(directory, charmm_input, ref, env, throw=throw, verbose=verbose)
+            result, expected = run_test(
+                    directory, charmm_input, ref, env, 
+                    output_file="test{}.out".format(i), 
+                    throw=throw, verbose=verbose
+            )
             print("{:50} {:10.2f} | ref: {:10.2f}".format(description, result, expected))
 
