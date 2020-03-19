@@ -7839,7 +7839,7 @@ LPDNA1  RBD    -0.09000  3.57000 ! nucleic acid bases
 LPDNA1  MAGD   -0.16504  2.20163 ! nucleic acid bases 
  
 
-THOLE TCUT 5.0 MAXNBTHOLE 5000 
+THOL TCUT 5.0 MAXNBTHOLE 5000 
 !command for NAMD is "drudeNbtholeCut 5" 
 
 ODW  BAD      1.45869 

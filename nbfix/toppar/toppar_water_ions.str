@@ -264,7 +264,7 @@ CAD    0.000000  -0.120000     1.357000 ! Cadmium
 CLA      0.0       -0.150      2.27     ! Chloride
                    ! D. Beglovd and B. Roux, dA=-83.87+4.46 = -79.40 kcal/mol
 
-NBFIX
+NBFI
 !              Emin         Rmin
 !            (kcal/mol)     (A)
 SOD    CLA      -0.083875   3.731 !  From osmotic pressure calibration, J. Phys.Chem.Lett. 1:183-189
@@ -296,7 +296,7 @@ read para card flex append
 *
 
 ! These NBFixes will only apply if the main files have been read in first!!!
-NBFIX
+NBFI
 
 !new SOD NBFIX values
 ! Simulations of Anionic Lipid Membranes: Development of Interaction-Specific
