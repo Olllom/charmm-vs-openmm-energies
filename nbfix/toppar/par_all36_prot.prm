@@ -26,7 +26,7 @@
 !empirical potential for molecular modeling and dynamics Studies of
 !proteins.  Journal of Physical Chemistry B, 1998, 102, 3586-3616.
 
-ATOMS
+ATOM
 MASS    31 H      1.00800 ! polar H
 MASS    32 HC     1.00800 ! N-ter H
 MASS    33 HA     1.00800 ! nonpolar H
@@ -82,7 +82,7 @@ MASS    82 SM    32.06000 ! sulfur C-S-S-C type
 MASS    83 SS    32.06000 ! thiolate sulfur
 
 
-BONDS
+BOND
 !
 !V(bond) = Kb(b - b0)**2
 !
@@ -340,7 +340,7 @@ CT2A CC    200.000     1.5220 ! from CT2  CC, jshim
 ! RESI CYSM and PRES CYSD
 CT1  CS    190.000     1.5380 ! from CT3 CS but lengthened; compare CT3 CT2 with CT2 CT1; kevo
 
-ANGLES
+THET
 !
 !V(angle) = Ktheta(Theta - Theta0)**2
 !
@@ -1013,7 +1013,7 @@ HA2  CS   CT1    34.600   110.10    22.53   2.17900 ! from HA2 CS CT3 to be cons
 ! PRES SERD
 OC   CT2  CT1    65.000   122.0000 ! from OC   CT2  CT3 , kevo
 
-DIHEDRALS
+PHI
 !
 !V(dihedral) = Kchi(1 + cos(n(chi) - delta))
 !
@@ -2150,7 +2150,7 @@ CC   CT1  CT2  OC       0.2000  3     0.00 ! from X    CT1  CT2  X , kevo
 CD   CT1  CT2  OC       0.2000  3     0.00 ! from X    CT1  CT2  X , kevo
 HB1  CT1  CT2  OC       0.2000  3     0.00 ! from X    CT1  CT2  X , kevo
 
-IMPROPER
+IMPH
 !
 !V(improper) = Kpsi(psi - psi0)**2
 !
@@ -3268,7 +3268,7 @@ C    NH1  CT2  C    NH1  CT2  C    N   24
      0.688500      1.683900      2.188200      2.046200      1.392400 
      0.620800      0.014200     -0.269700     -0.203800 
 
-NONBONDED nbxmod  5 atom cdiel fshift vatom vdistance vfswitch -
+NBON nbxmod  5 atom cdiel fshift vatom vdistance vfswitch -
 cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5 
                 !adm jr., 2013 correction
 !
